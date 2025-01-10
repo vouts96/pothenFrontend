@@ -1,0 +1,158 @@
+<div class="vh-100 d-flex flex-column">
+    <!-- Header Section -->
+    <header class="bg-success text-white py-1 text-center w-100">
+        <img src="/letters.png" class="img-fluid" alt="Image">    
+        <!-- Disconnect Button -->
+        <button class="btn btn-outline-light position-absolute disconnect-btn" title="Disconnect" (click)="disconnect()">
+        <i class="bi bi-box-arrow-right"></i> Αποσύνδεση
+      </button>
+    </header>
+  
+    <!-- Form Section -->
+    <div class="flex-grow-1 d-flex align-items-center justify-content-center">
+      <div class="shadowed-frame p-4">
+        <form>
+          <div class="row">
+            <!-- Α.Φ.Μ -->
+            <div class="col-md-6 mb-3">
+              <label for="afm" class="form-label">Α.Φ.Μ.:</label>
+              <input type="text" id="afm" class="form-control" placeholder="Α.Φ.Μ." required />
+            </div>
+  
+            <!-- Α.Δ.Τ - Α.Γ.Μ -->
+            <div class="col-md-6 mb-3">
+              <label for="adt" class="form-label">Α.Δ.Τ - Α.Γ.Μ.:</label>
+              <input type="text" id="adt" class="form-control" placeholder="Α.Δ.Τ - Α.Γ.Μ." required />
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Επώνυμο -->
+            <div class="col-md-6 mb-3">
+              <label for="lastName" class="form-label">Επώνυμο:</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Επώνυμο" required />
+            </div>
+  
+            <!-- Όνομα -->
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">Όνομα:</label>
+              <input type="text" id="firstName" class="form-control" placeholder="Όνομα" required />
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Πατρώνυμο -->
+            <div class="col-md-6 mb-3">
+              <label for="fatherName" class="form-label">Πατρώνυμο:</label>
+              <input type="text" id="fatherName" class="form-control" placeholder="Πατρώνυμο" required />
+            </div>
+  
+            <!-- Ιδιότητα -->
+            <div class="col-md-6 mb-3">
+              <label for="position" class="form-label">Ιδιότητα:</label>
+              <select id="position" class="form-select" required>
+                <option value="" selected disabled>Επιλογή...</option>
+                <option value="position1">Position 1</option>
+                <option value="position2">Position 2</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Ημ/νία Απόκτησης Ιδιότητας -->
+            <div class="col-md-6 mb-3">
+              <label for="acquisitionDate" class="form-label">Ημ/νία Απόκτησης Ιδιότητας:</label>
+              <input type="date" id="acquisitionDate" class="form-control" required />
+            </div>
+  
+            <!-- Ημ/νία Απώλειας Ιδιότητας -->
+            <div class="col-md-6 mb-3">
+              <label for="lossDate" class="form-label">Ημ/νία Απώλειας Ιδιότητας:</label>
+              <input type="date" id="lossDate" class="form-control" required />
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Οργανική Μονάδα -->
+            <div class="col-md-6 mb-3">
+              <label for="organizationUnit" class="form-label">Οργανική Μονάδα:</label>
+              <input type="text" id="organizationUnit" class="form-control" placeholder="Οργανική Μονάδα" required />
+            </div>
+  
+            <!-- Νέα Οργανική Μονάδα -->
+            <div class="col-md-6 mb-3">
+              <label for="newOrganizationUnit" class="form-label">Νέα Οργανική Μονάδα:</label>
+              <input type="text" id="newOrganizationUnit" class="form-control" placeholder="Νέα Οργανική Μονάδα" />
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Βαθμός -->
+            <div class="col-md-6 mb-3">
+              <label for="grade" class="form-label">Βαθμός:</label>
+              <select id="grade" class="form-select">
+                <option value="" selected disabled>Επιλογή...</option>
+                <option value="grade1">Grade 1</option>
+                <option value="grade2">Grade 2</option>
+              </select>
+            </div>
+  
+            <!-- Όνομα Επιτροπής -->
+            <div class="col-md-6 mb-3">
+              <label for="committeeName" class="form-label">Όνομα Επιτροπής:</label>
+              <select id="committeeName" class="form-select">
+                <option value="" selected disabled>Επιλογή...</option>
+                <option value="committee1">Committee 1</option>
+                <option value="committee2">Committee 2</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Αριθμός πρωτοκόλλου απόφασης -->
+            <div class="col-md-6 mb-3">
+              <label for="protocolNumber" class="form-label">Αριθμός πρωτοκόλλου απόφασης:</label>
+              <input type="text" id="protocolNumber" class="form-control" placeholder="Αριθμός πρωτοκόλλου απόφασης" />
+            </div>
+  
+            <!-- Ημ/νία Έκδοσης Απόφασης -->
+            <div class="col-md-6 mb-3">
+              <label for="decisionDate" class="form-label">Ημ/νία Έκδοσης Απόφασης:</label>
+              <input type="date" id="decisionDate" class="form-control" />
+            </div>
+          </div>
+  
+          <!-- Έχετε υποβάλει το προηγούμενο έτος -->
+          <div class="row">
+            <div class="col-12 mb-3">
+              <label class="form-label">Έχετε υποβάλει το προηγούμενο έτος πόθεν στη Γ ομάδα ελέγχου (ετήσιας):</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="previousSubmission" id="yes" value="yes" required />
+                <label class="form-check-label" for="yes">Ναι</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="previousSubmission" id="no" value="no" required />
+                <label class="form-check-label" for="no">Όχι</label>
+              </div>
+            </div>
+          </div>
+          
+          <p class="note">
+            Οι υπόχρεοι των οποίων η οικογενειακή κατάσταση έχει μεταβληθεί, εντός του αναφερόμενου έτους, σε σχέση με την τελευταία οριστικοποιημένη αρχική ή ετήσια Δ.Π.Κ. του προηγούμενου έτους αναφοράς, καθώς και όσοι απέκτησαν ιδιότητα υπόχρεου για πρώτη φορά στο αναφερόμενο έτος, απαιτείται να συνδεθούν στην εφαρμογή «Γνωστοποίηση Στοιχείων Συζύγου/ΜΣΣ Υπόχρεου Πόθεν Έσχες» στην διεύθυνση https://www.pothen.gr/syzygos, προκειμένου να γνωστοποιήσουν τον Αριθμό Φορολογικού Μητρώου (Α.Φ.Μ.) των συζύγων τους, των εν διαστάσει συζύγων τους ή των προσώπων με τα οποία έχουν συνάψει σύμφωνο συμβίωσης
+          </p>
+          <!-- Submit Button -->
+          <div class="row">
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-success btn-lg w-50">Καταχώρηση Δήλωσης</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Footer Section -->
+    <footer class="bg-success text-white py-2 text-center w-100">
+      <p class="mb-0">© 2025 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+  

@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
+import { UserNewSubmissionComponent } from './components/user-new-submission/user-new-submission.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -11,6 +12,12 @@ const routes: Routes = [
   {
     path: 'user/home',
     component: HomeUserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_USER'] },
+  },
+  {
+    path: 'user/new-submission',
+    component: UserNewSubmissionComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_USER'] },
   },

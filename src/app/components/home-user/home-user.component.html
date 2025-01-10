@@ -3,7 +3,7 @@
     <header class="bg-success text-white py-1 text-center w-100">
         <img src="/letters.png" class="img-fluid" alt="Image">    
         <!-- Disconnect Button -->
-    <button class="btn btn-outline-light position-absolute disconnect-btn" title="Disconnect" (click)="disconnect()">
+        <button class="btn btn-outline-light position-absolute disconnect-btn" title="Disconnect" (click)="disconnect()">
         <i class="bi bi-box-arrow-right"></i> Αποσύνδεση
       </button>
     </header>
@@ -11,7 +11,7 @@
     <!-- Buttons Section -->
     <div class="flex-grow-1 d-flex align-items-center justify-content-center">
       <div class="text-center">
-        <button class="btn btn-success btn-lg mb-3 w-100">Δημιουργία Νέας Καταχώρησης</button>
+        <button (click)="redirectToPage()" class="btn btn-success btn-lg mb-3 w-100">Δημιουργία Νέας Καταχώρησης</button>
         <button class="btn btn-success btn-lg w-100">Οι Καταχωρήσεις μου</button>
       </div>
     </div>

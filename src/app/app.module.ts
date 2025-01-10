@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { UserNewSubmissionComponent } from './components/user-new-submission/user-new-submission.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeAdminComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    UserNewSubmissionComponent
   ],
   imports: [
     BrowserModule,
