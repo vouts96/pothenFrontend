@@ -28,6 +28,8 @@ export class LoginComponent {
       const credentials = this.loginForm.value;
       this.authService.login(credentials).subscribe(response => {
         console.log('Login successful!', response);
+        this.authService.saveToken(response.id_token)
+        const roles = this.authService.getRoles()
       }, error => {
         console.error('Login failed', error);
       });

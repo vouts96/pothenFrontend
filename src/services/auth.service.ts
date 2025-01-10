@@ -35,7 +35,7 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decodedToken = this.jwtHelper.decodeToken(token);
-      return decodedToken.authorities || [];
+      return decodedToken.auth || [];
     }
     return [];
   }

@@ -7,10 +7,14 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { HomeAdminComponent } from './components/home-admin/home-admin.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeAdminComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
