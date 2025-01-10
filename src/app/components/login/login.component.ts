@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,27 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./login.component.css'], // Assuming you're using plain CSS
   imports: [ReactiveFormsModule, CommonModule]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
+  }
+
+  ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      const roles = this.authService.getRoles();
+
+      // Redirect based on role
+      if (roles.includes('ROLE_ADMIN')) {
+        this.router.navigate(['/admin/home']);
+      } else if (roles.includes('ROLE_USER')) {
+        this.router.navigate(['/user/home']);
+      }
+    }
   }
 
   onSubmit(): void {
@@ -30,6 +44,14 @@ export class LoginComponent {
         console.log('Login successful!', response);
         this.authService.saveToken(response.id_token)
         const roles = this.authService.getRoles()
+        this.authService.saveRoles(roles);
+
+        // Redirect based on role
+        if (roles.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/admin/home']);
+        } else if (roles.includes('ROLE_USER')) {
+          this.router.navigate(['/user/home']);
+        }
       }, error => {
         console.error('Login failed', error);
       });

@@ -11,6 +11,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/api';
   private jwtHelper = new JwtHelperService();
   private tokenKey = 'auth-token';
+  private rolesKey = 'user-roles';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -38,6 +39,10 @@ export class AuthService {
       return decodedToken.auth || [];
     }
     return [];
+  }
+
+  saveRoles(roles: string[]) {
+    localStorage.setItem(this.rolesKey, JSON.stringify(roles));
   }
 
   logout() {
