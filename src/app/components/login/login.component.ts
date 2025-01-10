@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -24,13 +25,12 @@ export class LoginComponent {
       const password = this.loginForm.get('password')?.value;
       console.log('Login form submitted!', { username, password });
 
-      // Add your authentication logic here, e.g., calling an API
-      // Example:
-      // this.authService.login(username, password).subscribe(response => {
-      //   console.log('Login successful!', response);
-      // }, error => {
-      //   console.error('Login failed', error);
-      // });
+      const credentials = this.loginForm.value;
+      this.authService.login(credentials).subscribe(response => {
+        console.log('Login successful!', response);
+      }, error => {
+        console.error('Login failed', error);
+      });
     } else {
       console.log('Form is invalid');
     }
