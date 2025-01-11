@@ -39,7 +39,12 @@ export class LoginComponent implements OnInit{
       const password = this.loginForm.get('password')?.value;
       console.log('Login form submitted!', { username, password });
 
-      const credentials = this.loginForm.value;
+      const credentials = {
+        username: this.loginForm.get('username')?.value,
+        password: this.loginForm.get('password')?.value,
+        rememberMe: true // Include rememberMe flag
+      };
+
       this.authService.login(credentials).subscribe(response => {
         console.log('Login successful!', response);
         this.authService.saveToken(response.id_token)

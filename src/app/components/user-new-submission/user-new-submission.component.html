@@ -164,11 +164,11 @@
             <div class="col-12 mb-3">
               <label class="form-label">Έχετε υποβάλει το προηγούμενο έτος πόθεν στη Γ ομάδα ελέγχου (ετήσιας):</label>
               <div class="form-check">
-                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="yes" value="yes" required />
+                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="yes" value="true" required />
                 <label class="form-check-label" for="yes">Ναι</label>
               </div>
               <div class="form-check">
-                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="no" value="no" required />
+                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="no" value="false" required />
                 <label class="form-check-label" for="no">Όχι</label>
               </div>
               <div *ngIf="submissionForm.get('previousSubmission')?.touched && submissionForm.get('previousSubmission')?.invalid" class="text-danger small">
