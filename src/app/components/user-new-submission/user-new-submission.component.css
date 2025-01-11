@@ -32,7 +32,7 @@ header {
   
   /* Shadowed Frame for the Form */
 .shadowed-frame {
-    background-color: #d1dfc6; /* White background for the frame */
+    background-color: #bbbeb8; /* White background for the frame */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
     max-width: 800px; /* Maximum width of the frame */

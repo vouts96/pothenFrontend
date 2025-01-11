@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit{
         }
       }, error => {
         console.error('Login failed', error);
+        alert('Λάθος κωδικός ή όνομα χρήστη')
       });
     } else {
       console.log('Form is invalid');

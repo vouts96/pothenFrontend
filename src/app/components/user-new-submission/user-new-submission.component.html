@@ -11,18 +11,25 @@
     <!-- Form Section -->
     <div class="flex-grow-1 d-flex align-items-center justify-content-center">
       <div class="shadowed-frame p-4">
-        <form>
+        <form [formGroup]="submissionForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <!-- Α.Φ.Μ -->
             <div class="col-md-6 mb-3">
               <label for="afm" class="form-label">Α.Φ.Μ.:</label>
-              <input type="text" id="afm" class="form-control" placeholder="Α.Φ.Μ." required />
+              <input formControlName="afm" type="text" id="afm" class="form-control" placeholder="Α.Φ.Μ." required />
+              <div *ngIf="submissionForm.get('afm')?.touched && submissionForm.get('afm')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('afm')?.errors?.['required']">Το πεδίο Α.Φ.Μ. είναι υποχρεωτικό.</div>
+                <div *ngIf="submissionForm.get('afm')?.errors?.['pattern']">Το πεδίο Α.Φ.Μ. πρέπει να είναι αριθμός 9 ψηφίων.</div>
+              </div>
             </div>
   
             <!-- Α.Δ.Τ - Α.Γ.Μ -->
             <div class="col-md-6 mb-3">
               <label for="adt" class="form-label">Α.Δ.Τ - Α.Γ.Μ.:</label>
-              <input type="text" id="adt" class="form-control" placeholder="Α.Δ.Τ - Α.Γ.Μ." required />
+              <input formControlName="adt" type="text" id="adt" class="form-control" placeholder="Α.Δ.Τ - Α.Γ.Μ." required />
+              <div *ngIf="submissionForm.get('adt')?.touched && submissionForm.get('adt')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('adt')?.errors?.['required']">Το πεδίο Α.Δ.Τ - Α.Γ.Μ. είναι υποχρεωτικό.</div>
+              </div>
             </div>
           </div>
   
@@ -30,13 +37,19 @@
             <!-- Επώνυμο -->
             <div class="col-md-6 mb-3">
               <label for="lastName" class="form-label">Επώνυμο:</label>
-              <input type="text" id="lastName" class="form-control" placeholder="Επώνυμο" required />
+              <input formControlName="lastName" type="text" id="lastName" class="form-control" placeholder="Επώνυμο" required />
+              <div *ngIf="submissionForm.get('lastName')?.touched && submissionForm.get('lastName')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('lastName')?.errors?.['required']">Το πεδίο Επώνυμο είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Όνομα -->
             <div class="col-md-6 mb-3">
               <label for="firstName" class="form-label">Όνομα:</label>
-              <input type="text" id="firstName" class="form-control" placeholder="Όνομα" required />
+              <input formControlName="firstName" type="text" id="firstName" class="form-control" placeholder="Όνομα" required />
+              <div *ngIf="submissionForm.get('firstName')?.touched && submissionForm.get('firstName')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('firstName')?.errors?.['required']">Το πεδίο Όνομα είναι υποχρεωτικό.</div>
+              </div>
             </div>
           </div>
   
@@ -44,17 +57,23 @@
             <!-- Πατρώνυμο -->
             <div class="col-md-6 mb-3">
               <label for="fatherName" class="form-label">Πατρώνυμο:</label>
-              <input type="text" id="fatherName" class="form-control" placeholder="Πατρώνυμο" required />
+              <input formControlName="fatherName" type="text" id="fatherName" class="form-control" placeholder="Πατρώνυμο" required />
+              <div *ngIf="submissionForm.get('fatherName')?.touched && submissionForm.get('fatherName')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('fatherName')?.errors?.['required']">Το πεδίο Πατρώνυμο είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Ιδιότητα -->
             <div class="col-md-6 mb-3">
               <label for="position" class="form-label">Ιδιότητα:</label>
-              <select id="position" class="form-select" required>
+              <select formControlName="position" id="position" class="form-select" required>
                 <option value="" selected disabled>Επιλογή...</option>
                 <option value="position1">Position 1</option>
                 <option value="position2">Position 2</option>
               </select>
+              <div *ngIf="submissionForm.get('position')?.touched && submissionForm.get('position')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('position')?.errors?.['required']">Το πεδίο Ιδιότητα είναι υποχρεωτικό.</div>
+              </div>
             </div>
           </div>
   
@@ -62,7 +81,10 @@
             <!-- Ημ/νία Απόκτησης Ιδιότητας -->
             <div class="col-md-6 mb-3">
               <label for="acquisitionDate" class="form-label">Ημ/νία Απόκτησης Ιδιότητας:</label>
-              <input type="date" id="acquisitionDate" class="form-control" required />
+              <input formControlName="acquisitionDate" type="date" id="acquisitionDate" class="form-control" required />
+              <div *ngIf="submissionForm.get('acquisitionDate')?.touched && submissionForm.get('acquisitionDate')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('acquisitionDate')?.errors?.['required']">Το πεδίο Ημ/νία Απόκτησης Ιδιότητας είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Ημ/νία Απώλειας Ιδιότητας -->
@@ -76,7 +98,10 @@
             <!-- Οργανική Μονάδα -->
             <div class="col-md-6 mb-3">
               <label for="organizationUnit" class="form-label">Οργανική Μονάδα:</label>
-              <input type="text" id="organizationUnit" class="form-control" placeholder="Οργανική Μονάδα" required />
+              <input formControlName="organizationUnit" type="text" id="organizationUnit" class="form-control" placeholder="Οργανική Μονάδα" required />
+              <div *ngIf="submissionForm.get('organizationUnit')?.touched && submissionForm.get('organizationUnit')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('organizationUnit')?.errors?.['required']">Το πεδίο Οργανική Μονάδα είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Νέα Οργανική Μονάδα -->
@@ -90,35 +115,47 @@
             <!-- Βαθμός -->
             <div class="col-md-6 mb-3">
               <label for="grade" class="form-label">Βαθμός:</label>
-              <select id="grade" class="form-select">
+              <select formControlName="grade" id="grade" class="form-select">
                 <option value="" selected disabled>Επιλογή...</option>
                 <option value="grade1">Grade 1</option>
                 <option value="grade2">Grade 2</option>
               </select>
+              <div *ngIf="submissionForm.get('grade')?.touched && submissionForm.get('grade')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('grade')?.errors?.['required']">Το πεδίο Βαθμός είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Όνομα Επιτροπής -->
             <div class="col-md-6 mb-3">
               <label for="committeeName" class="form-label">Όνομα Επιτροπής:</label>
-              <select id="committeeName" class="form-select">
+              <select formControlName="committeeName" id="committeeName" class="form-select">
                 <option value="" selected disabled>Επιλογή...</option>
                 <option value="committee1">Committee 1</option>
                 <option value="committee2">Committee 2</option>
               </select>
+              <div *ngIf="submissionForm.get('committeeName')?.touched && submissionForm.get('committeeName')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('committeeName')?.errors?.['required']">Το πεδίο Όνομα Επιτροπής είναι υποχρεωτικό.</div>
+              </div>
             </div>
           </div>
   
           <div class="row">
             <!-- Αριθμός πρωτοκόλλου απόφασης -->
             <div class="col-md-6 mb-3">
-              <label for="protocolNumber" class="form-label">Αριθμός πρωτοκόλλου απόφασης:</label>
-              <input type="text" id="protocolNumber" class="form-control" placeholder="Αριθμός πρωτοκόλλου απόφασης" />
+              <label for="protocolNumber" class="form-label">Αριθμός Πρωτοκόλλου Απόφασης:</label>
+              <input formControlName="protocolNumber" type="text" id="protocolNumber" class="form-control" placeholder="Αριθμός Πρωτοκόλλου Απόφασης" />
+              <div *ngIf="submissionForm.get('protocolNumber')?.touched && submissionForm.get('protocolNumber')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('protocolNumber')?.errors?.['required']">Το πεδίο Αριθμός Πρωτοκόλλου Απόφασης είναι υποχρεωτικό.</div>
+              </div>
             </div>
   
             <!-- Ημ/νία Έκδοσης Απόφασης -->
             <div class="col-md-6 mb-3">
               <label for="decisionDate" class="form-label">Ημ/νία Έκδοσης Απόφασης:</label>
-              <input type="date" id="decisionDate" class="form-control" />
+              <input formControlName="decisionDate" type="date" id="decisionDate" class="form-control" />
+              <div *ngIf="submissionForm.get('decisionDate')?.touched && submissionForm.get('decisionDate')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('decisionDate')?.errors?.['required']">Το πεδίο Ημ/νία Έκδοσης Απόφασης είναι υποχρεωτικό.</div>
+              </div>
             </div>
           </div>
   
@@ -127,12 +164,15 @@
             <div class="col-12 mb-3">
               <label class="form-label">Έχετε υποβάλει το προηγούμενο έτος πόθεν στη Γ ομάδα ελέγχου (ετήσιας):</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="previousSubmission" id="yes" value="yes" required />
+                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="yes" value="yes" required />
                 <label class="form-check-label" for="yes">Ναι</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="previousSubmission" id="no" value="no" required />
+                <input formControlName="previousSubmission" class="form-check-input" type="radio" name="previousSubmission" id="no" value="no" required />
                 <label class="form-check-label" for="no">Όχι</label>
+              </div>
+              <div *ngIf="submissionForm.get('previousSubmission')?.touched && submissionForm.get('previousSubmission')?.invalid" class="text-danger small">
+                <div *ngIf="submissionForm.get('previousSubmission')?.errors?.['required']">Είναι υποχρεωτικό να διαλέξετε μία επιλογή.</div>
               </div>
             </div>
           </div>
@@ -152,7 +192,7 @@
   
     <!-- Footer Section -->
     <footer class="bg-success text-white py-2 text-center w-100">
-      <p class="mb-0">© 2025 Your Company. All rights reserved.</p>
+      <p class="mb-0">© 2025 Υπουργείο Ψηφιακής Διακυβέρνησης. All rights reserved.</p>
     </footer>
   </div>
   
