@@ -1,4 +1,4 @@
-/* Shadowed box */
+/* Shadowed box styling */
 .shadowed-box {
     background-color: #fff;
     border-radius: 8px;
@@ -12,12 +12,22 @@
   }
   
   /* Submission Row */
-  .row.mb-2 {
-    border-bottom: 1px solid #eee;
-    padding: 5px 0;
+  .table-row {
+    transition: background-color 0.3s ease;
+    cursor: pointer; /* Pointer cursor for hover effect */
   }
   
-  .row.mb-2:last-child {
+  .table-row:hover {
+    background-color: #a3a3a3; /* Light gray hover effect */
+  }
+  
+  /* Submission Data */
+  .table-row div {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .table-row:last-child div {
     border-bottom: none;
   }
   
