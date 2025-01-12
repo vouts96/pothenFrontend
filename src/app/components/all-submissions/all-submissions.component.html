@@ -10,21 +10,21 @@
       <div *ngIf="submissions?.length > 0; else noData">
         <!-- Table Header -->
         <div class="row font-weight-bold mb-3">
-          <div class="col-1">ID</div>
-          <div class="col-2">Α.Φ.Μ.</div>
-          <div class="col-3">Όνομα</div>
-          <div class="col-2">Ιδιότητα</div>
-          <div class="col-2">Ημ/νία Απόκτησης</div>
+          <div class="text-center col-1">ID</div>
+          <div class="text-center col-2">Α.Φ.Μ.</div>
+          <div class="text-center col-3">Όνομα</div>
+          <div class="text-center col-2">Ιδιότητα</div>
+          <div class="text-center col-2">Ημ/νία Απόκτησης</div>
         </div>
         
         <!-- Submissions Data with Hover Effect -->
         <div class="row table-row mb-2" *ngFor="let submission of submissions">
-          <div class="col-1">{{ submission.id }}</div>
-          <div class="col-2">{{ submission.afm }}</div>
-          <div class="col-3">{{ submission.firstName }} {{ submission.lastName }}</div>
-          <div class="col-2">{{ submission.position }}</div>
-          <div class="col-2">{{ submission.acquisitionDate }}</div>
-          <div class="col-2 text-right">
+          <div class="text-center col-1">{{ submission.id }}</div>
+          <div class="text-center col-2">{{ submission.afm }}</div>
+          <div class="text-center col-3">{{ submission.firstName }} {{ submission.lastName }}</div>
+          <div class="text-center col-2">{{ submission.position }}</div>
+          <div class="text-center col-2">{{ submission.acquisitionDate }}</div>
+          <div class="text-center col-2 text-right">
             <button class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">Προβολή Καταχώρησης</button>
           </div>
         </div>
