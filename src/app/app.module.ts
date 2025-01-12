@@ -10,13 +10,17 @@ import { CommonModule } from '@angular/common';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { UserNewSubmissionComponent } from './components/user-new-submission/user-new-submission.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeAdminComponent,
     HomeUserComponent,
-    UserNewSubmissionComponent
+    UserNewSubmissionComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,7 @@ import { UserNewSubmissionComponent } from './components/user-new-submission/use
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

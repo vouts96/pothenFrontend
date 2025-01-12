@@ -26,7 +26,7 @@ const routes: Routes = [
     component: HomeAdminComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_ADMIN'] },
-  }
+  },
 ];
 
 @NgModule({

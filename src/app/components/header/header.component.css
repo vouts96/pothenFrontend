@@ -1,0 +1,31 @@
+/* Ensure header spans full width */
+header {
+    margin: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  
+  /* Optional button hover effect */
+  button {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  /* Disconnect button styling */
+.disconnect-btn {
+    top: 0.75rem;
+    right: 1rem;
+    z-index: 10;
+    font-size: 0.875rem;
+  }
+  
+  .disconnect-btn i {
+    margin-right: 0.5rem;
+  }
+
+  .disconnect-btn:hover{
+    background: rgba(122, 197, 135, 1);
+  }

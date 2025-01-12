@@ -15,4 +15,8 @@ export class HomeAdminComponent {
     disconnect(): void {
       this.authService.logout()
     }
+
+    redirectToPage() : void {
+      this.router.navigate(['/admin/all-submissions']);
+    }
 }
