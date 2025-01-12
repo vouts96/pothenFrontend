@@ -14,7 +14,7 @@
   /* Submission Row */
   .table-row {
     transition: background-color 0.3s ease;
-    cursor: pointer; /* Pointer cursor for hover effect */
+    cursor: pointer;
   }
   
   .table-row:hover {
@@ -29,5 +29,26 @@
   
   .table-row:last-child div {
     border-bottom: none;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .table-row div {
+      text-align: left;
+    }
+  
+    .text-md-center {
+      text-align: left !important;
+    }
+  
+    .text-md-right {
+      text-align: left !important;
+    }
+  
+    strong.d-md-none {
+      display: inline-block;
+      margin-right: 5px;
+      font-weight: bold;
+    }
   }
   

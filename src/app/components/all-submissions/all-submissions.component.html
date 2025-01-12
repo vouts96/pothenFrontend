@@ -1,42 +1,69 @@
 <div class="vh-100 d-flex flex-column">
     <!-- Header Section -->
     <app-header></app-header>
-
+  
     <!-- Main Content -->
-  <div class="container mb-4 mt-4 flex-grow-1">
-    <div class="shadowed-box p-3">
-      <h3 class="text-center mb-5">Λίστα Καταχωρήσεων</h3>
-      
-      <div *ngIf="submissions?.length > 0; else noData">
-        <!-- Table Header -->
-        <div class="row font-weight-bold mb-3">
-          <div class="text-center col-1">ID</div>
-          <div class="text-center col-2">Α.Φ.Μ.</div>
-          <div class="text-center col-3">Όνομα</div>
-          <div class="text-center col-2">Ιδιότητα</div>
-          <div class="text-center col-2">Ημ/νία Απόκτησης</div>
-        </div>
-        
-        <!-- Submissions Data with Hover Effect -->
-        <div class="row table-row mb-2" *ngFor="let submission of submissions">
-          <div class="text-center col-1">{{ submission.id }}</div>
-          <div class="text-center col-2">{{ submission.afm }}</div>
-          <div class="text-center col-3">{{ submission.firstName }} {{ submission.lastName }}</div>
-          <div class="text-center col-2">{{ submission.position }}</div>
-          <div class="text-center col-2">{{ submission.acquisitionDate }}</div>
-          <div class="text-center col-2 text-right">
-            <button class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">Προβολή Καταχώρησης</button>
+    <div class="container mb-4 mt-4 flex-grow-1">
+      <div class="shadowed-box p-3">
+        <h3 class="text-center mb-5">Λίστα Καταχωρήσεων</h3>
+  
+        <div *ngIf="submissions?.length > 0; else noData">
+          <!-- Table Header -->
+          <div class="row font-weight-bold mb-3 d-none d-md-flex">
+            <div class="text-center col-1">ID</div>
+            <div class="text-center col-2">Α.Φ.Μ.</div>
+            <div class="text-center col-3">Όνομα</div>
+            <div class="text-center col-2">Ιδιότητα</div>
+            <div class="text-center col-2">Ημ/νία Απόκτησης</div>
+          </div>
+  
+          <!-- Submissions Data -->
+          <div
+            class="row table-row mb-2 align-items-center text-center flex-wrap"
+            *ngFor="let submission of submissions"
+          >
+            <!-- ID -->
+            <div class="col-12 col-md-1 text-md-center">
+              <strong class="d-md-none">ID:</strong> {{ submission.id }}
+            </div>
+  
+            <!-- Α.Φ.Μ. -->
+            <div class="col-12 col-md-2 text-md-center">
+              <strong class="d-md-none">Α.Φ.Μ.:</strong> {{ submission.afm }}
+            </div>
+  
+            <!-- Όνομα -->
+            <div class="col-12 col-md-3 text-md-center">
+              <strong class="d-md-none">Όνομα:</strong> {{ submission.firstName }} {{ submission.lastName }}
+            </div>
+  
+            <!-- Ιδιότητα -->
+            <div class="col-12 col-md-2 text-md-center">
+              <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position }}
+            </div>
+  
+            <!-- Ημ/νία Απόκτησης -->
+            <div class="col-12 col-md-2 text-md-center">
+              <strong class="d-md-none">Ημ/νία Απόκτησης:</strong> {{ submission.acquisitionDate }}
+            </div>
+  
+            <!-- Actions -->
+            <div class="col-12 col-md-2 text-center text-md-right mt-2 mt-md-0">
+              <button class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">
+                Προβολή Καταχώρησης
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-
+  
         <!-- No Data Template -->
         <ng-template #noData>
-            <p class="text-center text-muted">Δε βρέθηκε καμία καταχώρηση.</p>
+          <p class="text-center text-muted">Δε βρέθηκε καμία καταχώρηση.</p>
         </ng-template>
-        </div>
+      </div>
     </div>
-
+  
     <!-- Footer Section -->
     <app-footer></app-footer>
-</div>
+  </div>
+  
