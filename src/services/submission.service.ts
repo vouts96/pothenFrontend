@@ -26,7 +26,7 @@ export class SubmissionService {
 
   // Fetch paginated submissions
   getSubmissions(page: number = 0, size: number = 20, eagerload: boolean = true): Observable<any> {
-    const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
+    const token = localStorage.getItem('auth-token'); // Retrieve token from localStorage
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'

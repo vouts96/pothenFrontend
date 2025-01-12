@@ -1,0 +1,42 @@
+<div class="vh-100 d-flex flex-column">
+    <!-- Header Section -->
+    <app-header></app-header>
+
+    <!-- Main Content -->
+    <div class="container mt-4 flex-grow-1">
+        <div class="shadowed-box p-3">
+        
+        <div *ngIf="submissions?.length > 0; else noData">
+        <!-- Table Header -->
+        <div class="row font-weight-bold mb-3">
+          <div class="col-1">ID</div>
+          <div class="col-2">Α.Φ.Μ.</div>
+          <div class="col-3">Όνομα</div>
+          <div class="col-2">Ιδιότητα</div>
+          <div class="col-2">Ημ/νία Απόκτησης</div>
+          <div class="col-2 text-right">Actions</div>
+        </div>
+        
+        <!-- Submissions Data -->
+        <div class="row mb-2" *ngFor="let submission of submissions">
+          <div class="col-1">{{ submission.id }}</div>
+          <div class="col-2">{{ submission.afm }}</div>
+          <div class="col-3">{{ submission.firstName }} {{ submission.lastName }}</div>
+          <div class="col-2">{{ submission.position }}</div>
+          <div class="col-2">{{ submission.acquisitionDate }}</div>
+          <div class="col-2 text-right">
+            <button class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">View Details</button>
+          </div>
+        </div>
+      </div>
+
+        <!-- No Data Template -->
+        <ng-template #noData>
+            <p class="text-center text-muted">Δε βρέθηκε καμία καταχώρηση.</p>
+        </ng-template>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <app-footer></app-footer>
+</div>

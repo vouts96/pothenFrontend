@@ -12,6 +12,7 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
 import { UserNewSubmissionComponent } from './components/user-new-submission/user-new-submission.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AllSubmissionsComponent } from './components/all-submissions/all-submissions.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeUserComponent,
     UserNewSubmissionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AllSubmissionsComponent
   ],
   imports: [
     BrowserModule,

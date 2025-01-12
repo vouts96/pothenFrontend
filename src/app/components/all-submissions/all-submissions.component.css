@@ -1,0 +1,23 @@
+/* Shadowed box */
+.shadowed-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Table Header */
+  .row.font-weight-bold {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
+  /* Submission Row */
+  .row.mb-2 {
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+  }
+  
+  .row.mb-2:last-child {
+    border-bottom: none;
+  }
+  
