@@ -17,7 +17,11 @@ export class HomeUserComponent {
     this.authService.logout()
   }
 
-  redirectToPage() : void {
+  redirectToPageNewSubmission() : void {
     this.router.navigate(['/user/new-submission']);
+  }
+
+  redirectToPageMySubmissions() : void {
+    this.router.navigate(['/user/my-submissions']);
   }
 }

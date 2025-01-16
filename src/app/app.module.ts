@@ -13,6 +13,7 @@ import { UserNewSubmissionComponent } from './components/user-new-submission/use
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllSubmissionsComponent } from './components/all-submissions/all-submissions.component';
+import { UserSubmissionsComponent } from './components/user-submissions/user-submissions.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AllSubmissionsComponent } from './components/all-submissions/all-submis
     UserNewSubmissionComponent,
     HeaderComponent,
     FooterComponent,
-    AllSubmissionsComponent
+    AllSubmissionsComponent,
+    UserSubmissionsComponent
   ],
   imports: [
     BrowserModule,
