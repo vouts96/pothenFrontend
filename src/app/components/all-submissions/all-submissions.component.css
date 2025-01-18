@@ -1,54 +1,31 @@
 /* Shadowed box styling */
 .shadowed-box {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Table Header */
-  .row.font-weight-bold {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
-  }
-  
-  /* Submission Row */
-  .table-row {
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .table-row:hover {
-    background-color: #a3a3a3; /* Light gray hover effect */
-  }
-  
-  /* Submission Data */
-  .table-row div {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .table-row:last-child div {
-    border-bottom: none;
-  }
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .table-row div {
-      text-align: left;
-    }
-  
-    .text-md-center {
-      text-align: left !important;
-    }
-  
-    .text-md-right {
-      text-align: left !important;
-    }
-  
-    strong.d-md-none {
-      display: inline-block;
-      margin-right: 5px;
-      font-weight: bold;
-    }
-  }
-  
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Submission Row */
+.table-row {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.table-row:hover {
+  background-color: #e9ecef; /* Light hover effect */
+}
+
+/* Table Styling */
+.table {
+  margin-bottom: 0; /* Remove margin for better alignment */
+  font-size: 0.9rem; /* Smaller font size for compact view */
+}
+
+th {
+  width: 30%; /* Consistent width for labels */
+  text-align: left;
+  font-weight: bold;
+}

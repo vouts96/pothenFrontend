@@ -39,7 +39,7 @@
   
             <!-- Ιδιότητα -->
             <div class="col-12 col-md-2 text-md-center">
-              <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position }}
+              <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position.name }}
             </div>
   
             <!-- Ημ/νία Απόκτησης -->
@@ -49,10 +49,76 @@
   
             <!-- Actions -->
             <div class="col-12 col-md-2 text-center text-md-right mt-2 mt-md-0">
-              <button class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">
+              <button (click)="toggleDetails(submission.id)" class="btn btn-success btn-sm" (click)="goToSubmission(submission.id)">
                 Προβολή Καταχώρησης
               </button>
             </div>
+
+
+            <!-- Dropdown for Submission Details -->
+            <div
+            *ngIf="expandedSubmissionId === submission.id"
+            class="col-12 mt-3 table-row p-3 rounded"
+            >
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <th scope="row">Α.Φ.Μ.</th>
+                  <td>{{ submission.afm }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Όνομα</th>
+                  <td>{{ submission.firstName }} {{ submission.lastName }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Πατρώνυμο</th>
+                  <td>{{ submission.fatherName }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ιδιότητα</th>
+                  <td>{{ submission.position.name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ημ/νία Απόκτησης</th>
+                  <td>{{ submission.acquisitionDate }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ημ/νία Απώλειας</th>
+                  <td>{{ submission.lossDate || 'N/A' }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Οργανική Μονάδα</th>
+                  <td>{{ submission.organizationUnit }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Νέα Οργανική Μονάδα</th>
+                  <td>{{ submission.newOrganizationUnit || 'N/A' }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Βαθμός</th>
+                  <td>{{ submission.grade.name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Όνομα Επιτροπής</th>
+                  <td>{{ submission.committeeName.name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Αριθμός Πρωτοκόλλου</th>
+                  <td>{{ submission.protocolNumber }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ημ/νία Απόφασης</th>
+                  <td>{{ submission.decisionDate }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Προηγούμενη Υποβολή</th>
+                  <td>{{ submission.previousSubmission ? 'Ναι' : 'Όχι' }}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+
+          
           </div>
         </div>
   

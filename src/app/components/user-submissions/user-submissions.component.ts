@@ -12,11 +12,17 @@ export class UserSubmissionsComponent implements OnInit {
   submissions: any[] = []; // Array to hold submissions
   currentPage: number = 0;
   totalPages: number = 0;
+  expandedSubmissionId: number | null = null; // Track which submission's details are expanded
 
   constructor(private submissionService: SubmissionService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadSubmissions();
+  }
+
+  toggleDetails(submissionId: number): void {
+    // If the same submission is clicked again, collapse it
+    this.expandedSubmissionId = this.expandedSubmissionId === submissionId ? null : submissionId;
   }
 
   // Fetch submissions from the backend
