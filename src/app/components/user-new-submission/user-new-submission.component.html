@@ -66,10 +66,11 @@
             <!-- Ιδιότητα -->
             <div class="col-md-6 mb-3">
               <label for="position" class="form-label">Ιδιότητα:</label>
-              <select formControlName="position" id="position" class="form-select" required>
+              <select formControlName="position" id="position" class="form-select">
                 <option value="" selected disabled>Επιλογή...</option>
-                <option value="position1">Position 1</option>
-                <option value="position2">Position 2</option>
+                <option *ngFor="let faculty of faculties" [ngValue]="faculty">
+                  {{ faculty.name }}
+                </option>
               </select>
               <div *ngIf="submissionForm.get('position')?.touched && submissionForm.get('position')?.invalid" class="text-danger small">
                 <div *ngIf="submissionForm.get('position')?.errors?.['required']">Το πεδίο Ιδιότητα είναι υποχρεωτικό.</div>
@@ -90,7 +91,7 @@
             <!-- Ημ/νία Απώλειας Ιδιότητας -->
             <div class="col-md-6 mb-3">
               <label for="lossDate" class="form-label">Ημ/νία Απώλειας Ιδιότητας:</label>
-              <input type="date" id="lossDate" class="form-control" required />
+              <input formControlName="lossDate" type="date" id="lossDate" class="form-control" />
             </div>
           </div>
   
@@ -107,7 +108,7 @@
             <!-- Νέα Οργανική Μονάδα -->
             <div class="col-md-6 mb-3">
               <label for="newOrganizationUnit" class="form-label">Νέα Οργανική Μονάδα:</label>
-              <input type="text" id="newOrganizationUnit" class="form-control" placeholder="Νέα Οργανική Μονάδα" />
+              <input formControlName="newOrganizationUnit" type="text" id="newOrganizationUnit" class="form-control" placeholder="Νέα Οργανική Μονάδα" />
             </div>
           </div>
   
@@ -117,8 +118,9 @@
               <label for="grade" class="form-label">Βαθμός:</label>
               <select formControlName="grade" id="grade" class="form-select">
                 <option value="" selected disabled>Επιλογή...</option>
-                <option value="grade1">Grade 1</option>
-                <option value="grade2">Grade 2</option>
+                <option *ngFor="let grade of grades" [ngValue]="grade">
+                  {{ grade.name }}
+                </option>
               </select>
               <div *ngIf="submissionForm.get('grade')?.touched && submissionForm.get('grade')?.invalid" class="text-danger small">
                 <div *ngIf="submissionForm.get('grade')?.errors?.['required']">Το πεδίο Βαθμός είναι υποχρεωτικό.</div>
@@ -130,8 +132,9 @@
               <label for="committeeName" class="form-label">Όνομα Επιτροπής:</label>
               <select formControlName="committeeName" id="committeeName" class="form-select">
                 <option value="" selected disabled>Επιλογή...</option>
-                <option value="committee1">Committee 1</option>
-                <option value="committee2">Committee 2</option>
+                <option *ngFor="let committee of committees" [ngValue]="committee">
+                  {{ committee.name }}
+                </option>
               </select>
               <div *ngIf="submissionForm.get('committeeName')?.touched && submissionForm.get('committeeName')?.invalid" class="text-danger small">
                 <div *ngIf="submissionForm.get('committeeName')?.errors?.['required']">Το πεδίο Όνομα Επιτροπής είναι υποχρεωτικό.</div>
