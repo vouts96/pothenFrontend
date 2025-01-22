@@ -19,4 +19,8 @@ export class HomeAdminComponent {
     redirectToPage() : void {
       this.router.navigate(['/admin/all-submissions']);
     }
+
+    redirectToPageEditForm(): void {
+      this.router.navigate(['/admin/edit-metadata']);
+    }
 }

@@ -1,0 +1,132 @@
+<div class="vh-100 d-flex flex-column">  
+  <app-header></app-header>
+
+  <div class="container mt-4 flex-grow-1">
+    <h3 class="text-center mb-4">Διαχείριση Πεδίων</h3>
+
+    <!-- Tabs for Positions, Grades, and Committees -->
+    <ul class="nav nav-tabs mb-4">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="activeTab === 'positions'"
+          (click)="setActiveTab('positions')"
+          >Ιδιότητες</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="activeTab === 'grades'"
+          (click)="setActiveTab('grades')"
+          >Βαθμοί</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="activeTab === 'committees'"
+          (click)="setActiveTab('committees')"
+          >Ονόματα Επιτροπών</a
+        >
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- Positions Tab -->
+      <div *ngIf="activeTab === 'positions'" class="tab-pane active">
+        <h5>Ιδιότητες</h5>
+        <div class="mb-3">
+          <input [(ngModel)]="newPosition" class="form-control mb-2" placeholder="Προσθέστε νέα ιδιότητα" />
+          <button class="btn btn-success btn-sm" (click)="addPosition()">Προσθήκη</button>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Όνομα</th>
+              <th>Ενέργειες</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let position of positions">
+              <td>{{ position.id }}</td>
+              <td>
+                <input [(ngModel)]="position.name" class="form-control form-control-sm" />
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="updatePosition(position)">Ενημέρωση</button>
+                &nbsp;
+                <button class="btn btn-danger btn-sm" (click)="deletePosition(position.id)">Διαγραφή</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Grades Tab -->
+      <div *ngIf="activeTab === 'grades'" class="tab-pane active">
+        <h5>Βαθμοί</h5>
+        <div class="mb-3">
+          <input [(ngModel)]="newGrade" class="form-control mb-2" placeholder="Προσθέστε νέο βαθμό" />
+          <button class="btn btn-success btn-sm" (click)="addGrade()">Προσθήκη</button>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Όνομα</th>
+              <th>Ενέργειες</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let grade of grades">
+              <td>{{ grade.id }}</td>
+              <td>
+                <input [(ngModel)]="grade.name" class="form-control form-control-sm" />
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="updateGrade(grade)">Ενημέρωση</button>
+                &nbsp;
+                <button class="btn btn-danger btn-sm" (click)="deleteGrade(grade.id)">Διαγραφή</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Committees Tab -->
+      <div *ngIf="activeTab === 'committees'" class="tab-pane active">
+        <h5>Ονόματα Επιτροπών</h5>
+        <div class="mb-3">
+          <input [(ngModel)]="newCommittee" class="form-control mb-2" placeholder="Προσθέστε νέα επιτροπή" />
+          <button class="btn btn-success btn-sm" (click)="addCommittee()">Προσθήκη</button>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Όνομα</th>
+              <th>Ενέργειες</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let committee of committees">
+              <td>{{ committee.id }}</td>
+              <td>
+                <input [(ngModel)]="committee.name" class="form-control form-control-sm" />
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="updateCommittee(committee)">Ενημέρωση</button>
+                &nbsp;
+                <button class="btn btn-danger btn-sm" (click)="deleteCommittee(committee.id)">Διαγραφή</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

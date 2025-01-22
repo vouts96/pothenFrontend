@@ -1,0 +1,5 @@
+/* Ensure the tabs have a pointer cursor on hover */
+.nav-link {
+    cursor: pointer; /* Change cursor to a hand pointer on hover */
+  }
+  

@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllSubmissionsComponent } from './components/all-submissions/all-submissions.component';
 import { UserSubmissionsComponent } from './components/user-submissions/user-submissions.component';
+import { EditMetadataComponent } from './components/edit-metadata/edit-metadata.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserSubmissionsComponent } from './components/user-submissions/user-sub
     HeaderComponent,
     FooterComponent,
     AllSubmissionsComponent,
-    UserSubmissionsComponent
+    UserSubmissionsComponent,
+    EditMetadataComponent
   ],
   imports: [
     BrowserModule,
