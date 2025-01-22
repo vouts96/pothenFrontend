@@ -41,7 +41,7 @@ export class GradeService {
   // Update an existing grade
   updateGrade(id: number, grade: { name: string }): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.put<any>(`${this.apiUrl}/${id}`, grade, { headers });
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, { id, grade } , { headers });
   }
 
   // Delete a grade

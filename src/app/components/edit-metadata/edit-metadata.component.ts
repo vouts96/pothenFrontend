@@ -46,7 +46,7 @@ export class EditMetadataComponent implements OnInit {
       (response) => {
         this.positions = response; // Assuming paginated response
       },
-      (error) => console.error('Error loading positions:', error)
+      (error) => console.error('Σφάλμα κατά τη φόρτωση ιδιοτήτων:', error)
     );
   }
 
@@ -57,16 +57,17 @@ export class EditMetadataComponent implements OnInit {
         (data: any) => {
           this.positions.push(data);
           this.newPosition = '';
+          alert('Η ιδιότητα προστέθηκε με επιτυχία.');
         },
-        (error) => console.error('Error adding position:', error)
+        (error) => alert('Σφάλμα κατά την προσθήκη ιδιότητας: ' + error.message)
       );
     }
   }
 
   updatePosition(position: any): void {
     this.positionService.updateFaculty(position.id, { name: position.name }).subscribe(
-      () => console.log('Position updated:', position),
-      (error) => console.error('Error updating position:', error)
+      () => alert('Η ιδιότητα ενημερώθηκε με επιτυχία.'),
+      (error) => alert('Σφάλμα κατά την ενημέρωση ιδιότητας: ' + error.message)
     );
   }
 
@@ -74,8 +75,9 @@ export class EditMetadataComponent implements OnInit {
     this.positionService.deleteFaculty(id).subscribe(
       () => {
         this.positions = this.positions.filter((p) => p.id !== id);
+        alert('Η ιδιότητα διαγράφηκε με επιτυχία.');
       },
-      (error) => console.error('Error deleting position:', error)
+      (error) => alert('Σφάλμα κατά τη διαγραφή ιδιότητας: ' + error.message)
     );
   }
 
@@ -85,7 +87,7 @@ export class EditMetadataComponent implements OnInit {
       (response) => {
         this.grades = response; // Assuming paginated response
       },
-      (error) => console.error('Error loading grades:', error)
+      (error) => console.error('Σφάλμα κατά τη φόρτωση βαθμών:', error)
     );
   }
 
@@ -96,16 +98,17 @@ export class EditMetadataComponent implements OnInit {
         (data: any) => {
           this.grades.push(data);
           this.newGrade = '';
+          alert('Ο βαθμός προστέθηκε με επιτυχία.');
         },
-        (error) => console.error('Error adding grade:', error)
+        (error) => alert('Σφάλμα κατά την προσθήκη βαθμού: ' + error.message)
       );
     }
   }
 
   updateGrade(grade: any): void {
     this.gradeService.updateGrade(grade.id, { name: grade.name }).subscribe(
-      () => console.log('Grade updated:', grade),
-      (error) => console.error('Error updating grade:', error)
+      () => alert('Ο βαθμός ενημερώθηκε με επιτυχία.'),
+      (error) => alert('Σφάλμα κατά την ενημέρωση βαθμού: ' + error.message)
     );
   }
 
@@ -113,8 +116,9 @@ export class EditMetadataComponent implements OnInit {
     this.gradeService.deleteGrade(id).subscribe(
       () => {
         this.grades = this.grades.filter((g) => g.id !== id);
+        alert('Ο βαθμός διαγράφηκε με επιτυχία.');
       },
-      (error) => console.error('Error deleting grade:', error)
+      (error) => alert('Σφάλμα κατά τη διαγραφή βαθμού: ' + error.message)
     );
   }
 
@@ -124,7 +128,7 @@ export class EditMetadataComponent implements OnInit {
       (response) => {
         this.committees = response; // Assuming paginated response
       },
-      (error) => console.error('Error loading committees:', error)
+      (error) => console.error('Σφάλμα κατά τη φόρτωση επιτροπών:', error)
     );
   }
 
@@ -135,16 +139,17 @@ export class EditMetadataComponent implements OnInit {
         (data: any) => {
           this.committees.push(data);
           this.newCommittee = '';
+          alert('Η επιτροπή προστέθηκε με επιτυχία.');
         },
-        (error) => console.error('Error adding committee:', error)
+        (error) => alert('Σφάλμα κατά την προσθήκη επιτροπής: ' + error.message)
       );
     }
   }
 
   updateCommittee(committee: any): void {
     this.committeeService.updateCommittee(committee.id, { name: committee.name }).subscribe(
-      () => console.log('Committee updated:', committee),
-      (error) => console.error('Error updating committee:', error)
+      () => alert('Η επιτροπή ενημερώθηκε με επιτυχία.'),
+      (error) => alert('Σφάλμα κατά την ενημέρωση επιτροπής: ' + error.message)
     );
   }
 
@@ -152,9 +157,9 @@ export class EditMetadataComponent implements OnInit {
     this.committeeService.deleteCommittee(id).subscribe(
       () => {
         this.committees = this.committees.filter((c) => c.id !== id);
+        alert('Η επιτροπή διαγράφηκε με επιτυχία.');
       },
-      (error) => console.error('Error deleting committee:', error)
+      (error) => alert('Σφάλμα κατά τη διαγραφή επιτροπής: ' + error.message)
     );
   }
-
 }
