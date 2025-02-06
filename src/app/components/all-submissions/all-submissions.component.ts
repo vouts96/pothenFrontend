@@ -39,11 +39,7 @@ export class AllSubmissionsComponent implements OnInit {
     );
   }
 
-  // Navigate to specific submission details
-  goToSubmission(id: number): void {
-    this.router.navigate(['/submission-details', id]);
-  }
-
+  
   // Disconnect the user
   disconnect(): void {
     localStorage.removeItem('authToken');

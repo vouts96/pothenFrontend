@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
-      console.log('Login form submitted!', { username, password });
+      //console.log('Login form submitted!', { username, password });
 
       const credentials = {
         username: this.loginForm.get('username')?.value,
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit{
       };
 
       this.authService.login(credentials).subscribe(response => {
-        console.log('Login successful!', response);
+        //console.log('Login successful!', response);
         this.authService.saveToken(response.id_token)
         const roles = this.authService.getRoles()
         this.authService.saveRoles(roles);
