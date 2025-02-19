@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://taxisnet.dslab.ece.ntua.gr/api' // Centralized API URL
+    apiUrl: 'http://localhost:8080/api' // Centralized API URL
   };
   
