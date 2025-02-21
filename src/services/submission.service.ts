@@ -7,7 +7,7 @@ import { environment } from '../config';
   providedIn: 'root'
 })
 export class SubmissionService {
-  private apiUrl = '${environment.apiUrl}/submissions'; // Replace with your actual API endpoint
+  private apiUrl = `${environment.apiUrl}/submissions`; // Replace with your actual API endpoint
 
   constructor(private http: HttpClient) {}
 

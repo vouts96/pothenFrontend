@@ -7,7 +7,7 @@ import { environment } from '../config';
   providedIn: 'root'
 })
 export class GradeService {
-  private apiUrl = '${environment.apiUrl}/grades'; // Replace with your actual API endpoint
+  private apiUrl = `${environment.apiUrl}/grades`; // Replace with your actual API endpoint
 
   constructor(private http: HttpClient) {}
 
