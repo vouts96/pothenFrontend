@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../config';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
+  selectedTab: string = 'taxisnet'; // Default tab
+  private client_id = environment.client_id;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -65,4 +68,13 @@ export class LoginComponent implements OnInit{
       console.log('Form is invalid');
     }
   }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
+
+  redirectToTaxisnet() {
+    window.location.href = `https://test.gsis.gr/oauth2servergov/oauth/authorize?response_type=code&client_id=${this.client_id}`;
+}
+
 }

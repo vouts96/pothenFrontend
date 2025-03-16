@@ -26,4 +26,27 @@
     z-index: 1; /* Content above the background */
   }
   
+
+  /* Prevent tab movement when switching */
+.tabs-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* Keep tabs fixed and prevent shifting */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 50px; /* Ensures tabs have a fixed height */
+}
+
+/* Ensure the tab content doesn't change height suddenly */
+.tab-content-container {
+  min-height: 250px; /* Adjust based on content */
+}
+
+  
   

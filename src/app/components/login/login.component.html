@@ -1,52 +1,73 @@
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
-	<div class="row w-100">
-	  <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center bg-success">
+	<div class="row w-100 h-100">
+	  <!-- Left Side Image (Always Full Height) -->
+	  <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center bg-success position-relative">
 		<img src="/letters.png" class="img-fluid" alt="Image">
 	  </div>
+  
+	  <!-- Right Side - Login Tabs (Fixed Height & Centered) -->
 	  <div class="col-lg-6 d-flex align-items-center justify-content-center">
-		<div class="w-100 px-3 px-md-5">
+		<div class="w-100 px-3 px-md-5 d-flex flex-column justify-content-center align-items-center h-100">
 		  <h3 class="text-center font-weight-normal mb-4">
 			Πλατφόρμα Καταχώρησης Στοιχείων Υπόχρεων για την Κατάθεση Δήλωσης Πόθεν Έσχες
 		  </h3>
-		  <h4 class="text-center font-weight-bold">Σύνδεση με κωδικούς taxisnet</h4>
-		  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-4">
-			<div class="input-group mb-3">
-			  <div class="input-group-prepend">
-				<span class="input-group-text bg-success text-white">
-				  <i class="bi bi-person-fill"></i>
-				</span>
-			  </div>
-			  <input
-				type="text"
-				formControlName="username"
-				placeholder="Όνομα χρήστη taxisnet"
-				class="form-control"
-			  />
+  
+		 <!-- Tabs Container (Fixed Position) -->
+		<div class="tabs-container">
+			<ul class="nav nav-tabs justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link" [class.active]="selectedTab === 'taxisnet'" (click)="selectTab('taxisnet')">Σύνδεση με Κωδικούς Εφαρμογής ΠΟΘΕΝ</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [class.active]="selectedTab === 'altLogin'" (click)="selectTab('altLogin')">Σύνδεση με Κωδικούς Taxisnet</a>
+			</li>
+			</ul>
+		</div>
+  
+		  <!-- Equal Height Tabs Container (Centered) -->
+		  <div class="tab-content-container w-100">
+			<!-- Taxisnet Login Form -->
+			<div *ngIf="selectedTab === 'taxisnet'" class="tab-pane active">
+			  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-4">
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text bg-success text-white">
+					  <i class="bi bi-person-fill"></i>
+					</span>
+				  </div>
+				  <input type="text" formControlName="username" placeholder="Όνομα χρήστη" class="form-control"/>
+				</div>
+				<div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger small">
+				  Username is required.
+				</div>
+  
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text bg-success text-white">
+					  <i class="bi bi-lock-fill"></i>
+					</span>
+				  </div>
+				  <input type="password" formControlName="password" placeholder="Κωδικός χρήστη" class="form-control"/>
+				</div>
+				<div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger small">
+				  Password is required.
+				</div>
+  
+				<button type="submit" class="btn btn-success btn-lg w-100 py-3 mt-3" [disabled]="loginForm.invalid">
+				  Είσοδος
+				  <i class="fa fa-sign-in-alt ml-2"></i>
+				</button>
+			  </form>
 			</div>
-			<div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger small">
-			  Username is required.
+  
+			<!-- Alternative Login Form -->
+			<div *ngIf="selectedTab === 'altLogin'" class="tab-pane">
+			  <button type="submit" class="btn btn-info btn-lg w-100 py-3 mt-3" (click)="redirectToTaxisnet()">
+				Είσοδος στην εφαρμογή μέσω Taxisnet
+				<i class="fa fa-sign-in-alt ml-2"></i>
+			  </button>
 			</div>
-			<div class="input-group mb-3">
-			  <div class="input-group-prepend">
-				<span class="input-group-text bg-success text-white">
-				  <i class="bi bi-lock-fill"></i>
-				</span>
-			  </div>
-			  <input
-				type="password"
-				formControlName="password"
-				placeholder="Κωδικός taxisnet"
-				class="form-control"
-			  />
-			</div>
-			<div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger small">
-			  Password is required.
-			</div>
-			<button type="submit" class="btn btn-success btn-block mt-3" [disabled]="loginForm.invalid">
-			  Είσοδος
-			  <i class="fa fa-sign-in-alt ml-2"></i>
-			</button>
-		  </form>
+		  </div>
 		</div>
 	  </div>
 	</div>

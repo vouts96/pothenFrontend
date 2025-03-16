@@ -8,10 +8,15 @@ import { UserNewSubmissionComponent } from './components/user-new-submission/use
 import { AllSubmissionsComponent } from './components/all-submissions/all-submissions.component';
 import { UserSubmissionsComponent } from './components/user-submissions/user-submissions.component';
 import { EditMetadataComponent } from './components/edit-metadata/edit-metadata.component';
+import { MiddlewareComponent } from './components/middleware/middleware.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: '',
+    component: MiddlewareComponent,
+  },
   {
     path: 'user/home',
     component: HomeUserComponent,

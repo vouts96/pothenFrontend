@@ -20,6 +20,11 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/authenticate`, credentials);
   }
 
+  loginOauth2(code: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/authenticate-oauth2?code=${code}`); 
+  }
+  
+
   saveToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
   }

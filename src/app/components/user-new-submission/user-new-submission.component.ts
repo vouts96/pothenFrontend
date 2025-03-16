@@ -49,6 +49,16 @@ export class UserNewSubmissionComponent implements OnInit {
     this.loadCommittees();
     this.loadFaculties();
     this.loadGrades();
+    this.authService.getAccount().subscribe(response => {
+      console.log(response)
+      this.submissionForm.patchValue({
+        afm: response.login,
+        lastName: response.lastName,
+        firstName: response.firstName
+      })
+    }, error => {
+
+    }) 
   }
 
   // Fetch committees from the service
