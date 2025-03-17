@@ -13,6 +13,7 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
   private tokenKey = 'auth-token';
   private rolesKey = 'user-roles';
+  private oauthMethod = 'jwt';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -32,6 +33,15 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
+
+  saveOAuthMethod(method: string){
+    localStorage.setItem(this.oauthMethod, method);
+  }
+
+  getOAuthMethod(): string | null {
+    return localStorage.getItem(this.oauthMethod);
+  }
+
 
   isAuthenticated(): boolean {
     const token = this.getToken();
@@ -54,6 +64,11 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
+  }
+
+  logout_oauth2(){
+    localStorage.removeItem(this.tokenKey);
+    window.location.href = environment.logoutURL;
   }
 
   getAccount(): Observable<any> { 

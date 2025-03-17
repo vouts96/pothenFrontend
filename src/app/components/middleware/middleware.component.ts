@@ -20,8 +20,9 @@ export class MiddlewareComponent implements OnInit {
         console.log('Code found in URL:', code);
         this.authService.loginOauth2(code).subscribe(response => {
           //console.log('Login successful!', response);
-          this.authService.saveToken(response.id_token)
-          const roles = this.authService.getRoles()
+          this.authService.saveToken(response.id_token);
+          this.authService.saveOAuthMethod('oauth2');
+          const roles = this.authService.getRoles();
           this.authService.saveRoles(roles);
   
           // Redirect based on role

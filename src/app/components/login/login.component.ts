@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit{
 
       this.authService.login(credentials).subscribe(response => {
         //console.log('Login successful!', response);
-        this.authService.saveToken(response.id_token)
+        this.authService.saveToken(response.id_token);
+        this.authService.saveOAuthMethod('jwt');
         const roles = this.authService.getRoles()
         this.authService.saveRoles(roles);
 
