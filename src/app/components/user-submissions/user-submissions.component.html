@@ -1,58 +1,62 @@
 <div class="vh-100 d-flex flex-column">
-    <!-- Header Section -->
-    <app-header></app-header>
-  
-    <!-- Main Content -->
-    <div class="container mb-4 mt-4 flex-grow-1">
+  <!-- Header Section -->
+  <app-header></app-header>
+
+  <!-- Main Content -->
+  <div class="container mb-4 mt-4 flex-grow-1">
       <div class="shadowed-box p-3">
-        <h3 class="text-center mb-5">Λίστα Καταχωρήσεων</h3>
-  
-        <div *ngIf="submissions?.length > 0; else noData">
-          <!-- Table Header -->
-          <div class="row font-weight-bold mb-3 d-none d-md-flex">
-            <div class="text-center col-1">ID</div>
-            <div class="text-center col-2">Α.Φ.Μ.</div>
-            <div class="text-center col-3">Όνομα</div>
-            <div class="text-center col-2">Ιδιότητα</div>
-            <div class="text-center col-2">Ημ/νία Απόκτησης</div>
-          </div>
-  
-          <!-- Submissions Data -->
-          <div
-            class="row table-row mb-2 align-items-center text-center flex-wrap"
-            *ngFor="let submission of submissions"
-          >
-            <!-- ID -->
-            <div class="col-12 col-md-1 text-md-center">
-              <strong class="d-md-none">ID:</strong> {{ submission.id }}
-            </div>
-  
-            <!-- Α.Φ.Μ. -->
-            <div class="col-12 col-md-2 text-md-center">
-              <strong class="d-md-none">Α.Φ.Μ.:</strong> {{ submission.afm }}
-            </div>
-  
-            <!-- Όνομα -->
-            <div class="col-12 col-md-3 text-md-center">
-              <strong class="d-md-none">Όνομα:</strong> {{ submission.firstName }} {{ submission.lastName }}
-            </div>
-  
-            <!-- Ιδιότητα -->
-            <div class="col-12 col-md-2 text-md-center">
-              <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position.name }}
-            </div>
-  
-            <!-- Ημ/νία Απόκτησης -->
-            <div class="col-12 col-md-2 text-md-center">
-              <strong class="d-md-none">Ημ/νία Απόκτησης:</strong> {{ submission.acquisitionDate }}
-            </div>
-  
-            <!-- Actions -->
-            <div class="col-12 col-md-2 text-center text-md-right mt-2 mt-md-0">
-              <button (click)="toggleDetails(submission.id)" class="btn btn-success btn-sm">
-                Προβολή Καταχώρησης
-              </button>
-            </div>
+          <h3 class="text-center mb-5">Λίστα Καταχωρήσεων</h3>
+
+          <div *ngIf="submissions?.length > 0; else noData">
+              <!-- Table Header -->
+              <div class="row font-weight-bold mb-3 d-none d-md-flex">
+                  <div class="text-center col-1">ID</div>
+                  <div class="text-center col-2">Α.Φ.Μ.</div>
+                  <div class="text-center col-3">Όνομα</div>
+                  <div class="text-center col-2">Ιδιότητα</div>
+                  <div class="text-center col-2">Ημ/νία Απόκτησης</div>
+              </div>
+
+              <!-- Submissions Data -->
+              <div
+                  class="row table-row mb-2 align-items-center text-center flex-wrap"
+                  *ngFor="let submission of submissions"
+              >
+                  <!-- ID -->
+                  <div class="col-12 col-md-1 text-md-center">
+                      <strong class="d-md-none">ID:</strong> {{ submission.id }}
+                  </div>
+
+                  <!-- Α.Φ.Μ. -->
+                  <div class="col-12 col-md-2 text-md-center">
+                      <strong class="d-md-none">Α.Φ.Μ.:</strong> {{ submission.afm }}
+                  </div>
+
+                  <!-- Όνομα -->
+                  <div class="col-12 col-md-3 text-md-center">
+                      <strong class="d-md-none">Όνομα:</strong> {{ submission.firstName }} {{ submission.lastName }}
+                  </div>
+
+                  <!-- Ιδιότητα -->
+                  <div class="col-12 col-md-2 text-md-center">
+                      <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position.name }}
+                  </div>
+
+                  <!-- Ημ/νία Απόκτησης -->
+                  <div class="col-12 col-md-2 text-md-center">
+                      <strong class="d-md-none">Ημ/νία Απόκτησης:</strong> {{ submission.acquisitionDate }}
+                  </div>
+
+                  <!-- Actions -->
+                  <div class="col-12 col-md-2 text-center text-md-right mt-2 mt-md-0">
+                      <button (click)="toggleDetails(submission.id)" class="btn btn-success btn-md">
+                          Προβολή Λεπτομερειών Καταχώρησης
+                      </button>
+                      &nbsp;
+                      <button (click)="toggleEdit(submission.id)" class="btn btn-warning btn-md ml-2">
+                          Τροποποίηση Δήλωσης
+                      </button>
+                  </div>
 
 
             <!-- Dropdown for Submission Details -->
@@ -118,18 +122,92 @@
             </table>
             </div>
 
-          
+                  <!-- Edit Form -->
+                  <div *ngIf="editingSubmissionId === submission.id" class="col-12 mt-3">
+                    <div class="card p-3">
+                        <h5 class="text-center">Επεξεργασία Καταχώρησης</h5>
+                        <form (ngSubmit)="saveChanges(submission.id)">
+                            <div class="form-group">
+                                <label>Α.Φ.Μ.</label>
+                                <input [(ngModel)]="submission.afm" name="afm" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Α.Δ.Τ.</label>
+                                <input [(ngModel)]="submission.adt" name="adt" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Όνομα</label>
+                                <input [(ngModel)]="submission.firstName" name="firstName" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Επώνυμο</label>
+                                <input [(ngModel)]="submission.lastName" name="lastName" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Πατρώνυμο</label>
+                                <input [(ngModel)]="submission.fatherName" name="fatherName" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Ιδιότητα</label>
+                                <input [(ngModel)]="submission.position.name" name="position" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Ημ/νία Απόκτησης</label>
+                                <input [(ngModel)]="submission.acquisitionDate" name="acquisitionDate" type="date" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Ημ/νία Απώλειας</label>
+                                <input [(ngModel)]="submission.lossDate" name="lossDate" type="date" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Οργανική Μονάδα</label>
+                                <input [(ngModel)]="submission.organizationUnit" name="organizationUnit" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Νέα Οργανική Μονάδα</label>
+                                <input [(ngModel)]="submission.newOrganizationUnit" name="newOrganizationUnit" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Βαθμός</label>
+                                <input [(ngModel)]="submission.grade.name" name="grade" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Όνομα Επιτροπής</label>
+                                <input [(ngModel)]="submission.committeeName.name" name="committeeName" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Αριθμός Πρωτοκόλλου</label>
+                                <input [(ngModel)]="submission.protocolNumber" name="protocolNumber" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Ημ/νία Απόφασης</label>
+                                <input [(ngModel)]="submission.decisionDate" name="decisionDate" type="date" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Προηγούμενη Υποβολή</label>
+                                <select [(ngModel)]="submission.previousSubmission" name="previousSubmission" class="form-control">
+                                    <option [value]="true">Ναι</option>
+                                    <option [value]="false">Όχι</option>
+                                </select>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary mr-2">Αποθήκευση</button>
+                                <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Ακύρωση</button>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+
+              </div>
           </div>
-        </div>
-  
-        <!-- No Data Template -->
-        <ng-template #noData>
-          <p class="text-center text-muted">Δε βρέθηκε καμία καταχώρηση.</p>
-        </ng-template>
+
+          <!-- No Data Template -->
+          <ng-template #noData>
+              <p class="text-center text-muted">Δε βρέθηκε καμία καταχώρηση.</p>
+          </ng-template>
       </div>
-    </div>
-  
-    <!-- Footer Section -->
-    <app-footer></app-footer>
   </div>
-  
+
+  <!-- Footer Section -->
+  <app-footer></app-footer>
+</div>
