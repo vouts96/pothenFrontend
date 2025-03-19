@@ -17,6 +17,8 @@ import { UserSubmissionsComponent } from './components/user-submissions/user-sub
 import { EditMetadataComponent } from './components/edit-metadata/edit-metadata.component';
 import { MiddlewareComponent } from './components/middleware/middleware.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MarkdownModule } from 'ngx-markdown'; 
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ChatComponent } from './components/chat/chat.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    MarkdownModule.forRoot() // Enables Markdown rendering
   ],
   providers: [],
   bootstrap: [AppComponent]

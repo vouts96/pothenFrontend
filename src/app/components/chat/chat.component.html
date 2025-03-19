@@ -1,17 +1,25 @@
 <div class="shadowed-box chat-container">
-    <div class="chat-header">
-      <h5>Ψηφιακός βοηθός ΠΟΘΕΝ</h5>
+  <div class="chat-header">
+    <h5>Ψηφιακός βοηθός ΠΟΘΕΝ</h5>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+      <!-- Markdown Support -->
+      <markdown [data]="msg.text"></markdown>
     </div>
-  
-    <div class="chat-messages">
-      <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
-        <span>{{ msg.text }}</span>
+
+    <!-- Show Spinner while waiting for response -->
+    <div class="spinner-container" *ngIf="isLoading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-  
-    <div class="d-flex chat-input">
-      <input class="form-control" [(ngModel)]="messageText" placeholder="Γράψτε την ερώτησή σας εδώ..." (keyup.enter)="sendMessage()" />
-      <button class="btn btn-primary btn-sm" (click)="sendMessage()">Αποστολή</button>
-    </div>
   </div>
-  
+
+  <div class="d-flex chat-input">
+    <input class="form-control" [(ngModel)]="messageText" placeholder="Γράψτε την ερώτησή σας εδώ..." 
+           (keyup.enter)="sendMessage()" [disabled]="isLoading" />
+    <button class="btn btn-primary btn-sm" (click)="sendMessage()" [disabled]="isLoading">Αποστολή</button>
+  </div>
+</div>

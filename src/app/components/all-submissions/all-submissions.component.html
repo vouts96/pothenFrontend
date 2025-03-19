@@ -60,7 +60,7 @@
 
             <!-- Chat Section (Hidden by Default) -->
             <div *ngIf="expandedChatId === submission.id" class="col-12 mt-3 table-row p-3 rounded">
-              <app-chat></app-chat>
+              <app-chat [auditResponse]="audits[submission.id]"></app-chat>
             </div>
 
 

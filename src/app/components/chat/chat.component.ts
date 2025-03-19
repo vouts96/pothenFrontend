@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-//import { ChatService } from '../services/chat.service';
+import { Component, Input } from '@angular/core';
+import { ChatService } from '../../../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,8 +10,11 @@ import { Component } from '@angular/core';
 export class ChatComponent {
   messages: { text: string; sender: string }[] = [];
   messageText = '';
+  isLoading = false; // Spinner state
 
-  constructor() {}
+  @Input() auditResponse: any = []; // Receiving audit data
+
+  constructor(private chatService: ChatService) {}
 
   sendMessage() {
     if (!this.messageText.trim()) return;
@@ -19,10 +22,28 @@ export class ChatComponent {
     // Add user message
     this.messages.push({ text: this.messageText, sender: 'user' });
 
+    // Show loading spinner
+    this.isLoading = true;
+
+    // Extract `modifiedBy` and `modifiedDate`, format as string
+    const formattedData = this.auditResponse.map((item: { id: any; modifiedBy: any; modifiedDate: any; }) =>
+      `ID: ${item.id}, Modified By: ${item.modifiedBy}, Modification Date: ${item.modifiedDate.split('T')[0]}`
+    ).join("\n");
+
+    // Prepare full prompt
+    const fullPrompt = `${this.messageText}\n\nSubmission Log:\n${formattedData}`;
+
+    console.log(fullPrompt)
     // Call backend (JHipster API)
-    // this.chatService.sendMessage(this.messageText).subscribe(response => {
-       this.messages.push({ text: 'hi', sender: 'bot' });
-    // });
+    this.chatService.sendMessage(fullPrompt).subscribe(response => {
+        this.messages.push({ text: response.response, sender: 'bot' });
+
+        // Hide loading spinner
+        this.isLoading = false;
+     }, () => {
+      // In case of an error, hide spinner
+      this.isLoading = false;
+     });
 
     this.messageText = '';
   }
