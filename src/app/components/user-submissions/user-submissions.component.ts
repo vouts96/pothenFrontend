@@ -64,10 +64,12 @@ export class UserSubmissionsComponent implements OnInit {
       this.submissionService.updateSubmission(submissionId, submission).subscribe(
         (response) => {
           console.log('Submission updated successfully', response);
+          alert('Οι αλλαγές αποθηκεύτηκαν με επιτυχία.')
           this.editingSubmissionId = null; // Close the form
         },
         (error) => {
           console.error('Error updating submission:', error);
+          alert('Σφάλμα κατά την αποθήκευση των αλλαγών.')
         }
       );
     }

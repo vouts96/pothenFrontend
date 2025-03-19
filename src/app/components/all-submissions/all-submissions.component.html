@@ -49,10 +49,20 @@
   
             <!-- Actions -->
             <div class="col-12 col-md-2 text-center text-md-right mt-2 mt-md-0">
-              <button (click)="toggleDetails(submission.id)" class="btn btn-success btn-sm">
-                Προβολή Καταχώρησης
+              <button (click)="toggleDetails(submission.id)" class="btn btn-success btn-md">
+                Προβολή Λεπτομερειών Καταχώρησης
+              </button>
+              &nbsp;
+              <button (click)="toggleChat(submission.id)" class="btn btn-primary btn-md mt-2 mt-md-0">
+                Ρωτήστε τον Ψηφιακό Βοηθό
               </button>
             </div>
+
+            <!-- Chat Section (Hidden by Default) -->
+            <div *ngIf="expandedChatId === submission.id" class="col-12 mt-3 table-row p-3 rounded">
+              <app-chat></app-chat>
+            </div>
+
 
             <!-- Dropdown for Submission Details -->
             <div

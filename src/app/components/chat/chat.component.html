@@ -1,0 +1,17 @@
+<div class="shadowed-box chat-container">
+    <div class="chat-header">
+      <h5>Ψηφιακός βοηθός ΠΟΘΕΝ</h5>
+    </div>
+  
+    <div class="chat-messages">
+      <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+        <span>{{ msg.text }}</span>
+      </div>
+    </div>
+  
+    <div class="d-flex chat-input">
+      <input class="form-control" [(ngModel)]="messageText" placeholder="Γράψτε την ερώτησή σας εδώ..." (keyup.enter)="sendMessage()" />
+      <button class="btn btn-primary btn-sm" (click)="sendMessage()">Αποστολή</button>
+    </div>
+  </div>
+  

@@ -13,6 +13,7 @@ export class AllSubmissionsComponent implements OnInit {
   currentPage: number = 0;
   totalPages: number = 0;
   expandedSubmissionId: number | null = null; // Track which submission's details are expanded
+  expandedChatId: number | null = null;
 
 
   constructor(private submissionService: SubmissionService, private router: Router) {}
@@ -24,6 +25,10 @@ export class AllSubmissionsComponent implements OnInit {
   toggleDetails(submissionId: number): void {
     // If the same submission is clicked again, collapse it
     this.expandedSubmissionId = this.expandedSubmissionId === submissionId ? null : submissionId;
+  }
+
+  toggleChat(submissionId: number) {
+    this.expandedChatId = this.expandedChatId === submissionId ? null : submissionId;
   }
 
   // Fetch submissions from the backend

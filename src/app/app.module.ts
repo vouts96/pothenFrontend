@@ -16,6 +16,7 @@ import { AllSubmissionsComponent } from './components/all-submissions/all-submis
 import { UserSubmissionsComponent } from './components/user-submissions/user-submissions.component';
 import { EditMetadataComponent } from './components/edit-metadata/edit-metadata.component';
 import { MiddlewareComponent } from './components/middleware/middleware.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MiddlewareComponent } from './components/middleware/middleware.componen
     AllSubmissionsComponent,
     UserSubmissionsComponent,
     EditMetadataComponent,
-    MiddlewareComponent
+    MiddlewareComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
