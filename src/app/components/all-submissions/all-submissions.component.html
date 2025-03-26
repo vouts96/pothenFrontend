@@ -8,6 +8,13 @@
         <h3 class="text-center mb-5">Λίστα Καταχωρήσεων</h3>
   
         <div *ngIf="submissions?.length > 0; else noData">
+
+          <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-outline-secondary" (click)="downloadCSV()">
+              📄 Εξαγωγή Καταχωρήσεων σε CSV
+            </button>
+          </div>
+          
           <!-- Table Header -->
           <div class="row font-weight-bold mb-3 d-none d-md-flex">
             <div class="text-center col-1">ID</div>

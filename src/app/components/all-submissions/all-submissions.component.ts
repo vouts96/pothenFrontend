@@ -74,4 +74,47 @@ export class AllSubmissionsComponent implements OnInit {
     localStorage.removeItem('authToken');
     this.router.navigate(['/login']);
   }
+
+  downloadCSV(): void {
+    if (!this.submissions || this.submissions.length === 0) return;
+  
+    const replacer = (key: string, value: any) => (value === null || value === undefined ? '' : value);
+    const header = [
+      'ID', 'ΑΦΜ', 'Όνομα', 'Επώνυμο', 'Ιδιότητα', 'Ημ/νία Απόκτησης',
+      'Ημ/νία Απώλειας', 'Οργανική Μονάδα', 'Νέα Οργανική Μονάδα', 'Βαθμός',
+      'Όνομα Επιτροπής', 'Αριθμός Πρωτοκόλλου', 'Ημ/νία Απόφασης', 'Προηγούμενη Υποβολή'
+    ];
+  
+    const rows = this.submissions.map(sub => [
+      sub.id,
+      sub.afm,
+      sub.firstName,
+      sub.lastName,
+      sub.position?.name,
+      sub.acquisitionDate,
+      sub.lossDate || '',
+      sub.organizationUnit,
+      sub.newOrganizationUnit || '',
+      sub.grade?.name,
+      sub.committeeName?.name,
+      sub.protocolNumber,
+      sub.decisionDate,
+      sub.previousSubmission ? 'Ναι' : 'Όχι'
+    ]);
+  
+    const csvContent =
+      '\uFEFF' + // UTF-8 BOM for Excel compatibility
+      [header, ...rows]
+        .map(row => row.map(val => `"${val}"`).join(','))
+        .join('\n');
+  
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'submissions.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+  
 }
