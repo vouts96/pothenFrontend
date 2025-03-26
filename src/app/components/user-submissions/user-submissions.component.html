@@ -14,7 +14,7 @@
                   <div class="text-center col-2">Α.Φ.Μ.</div>
                   <div class="text-center col-3">Όνομα</div>
                   <div class="text-center col-2">Ιδιότητα</div>
-                  <div class="text-center col-2">Ημ/νία Απόκτησης</div>
+                  <div class="text-center col-2">Όνομα Επιτροπής</div>
               </div>
 
               <!-- Submissions Data -->
@@ -42,9 +42,9 @@
                       <strong class="d-md-none">Ιδιότητα:</strong> {{ submission.position.name }}
                   </div>
 
-                  <!-- Ημ/νία Απόκτησης -->
+                  <!-- Όνομα Επιτροπής -->
                   <div class="col-12 col-md-2 text-md-center">
-                      <strong class="d-md-none">Ημ/νία Απόκτησης:</strong> {{ submission.acquisitionDate }}
+                    <strong class="d-md-none">Όνομα Επιτροπής:</strong> {{ submission.committeeName.name }}
                   </div>
 
                   <!-- Actions -->
