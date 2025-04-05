@@ -42,7 +42,7 @@ export class CommitteeService {
   // Update an existing committee
   updateCommittee(id: number, committee: { name: string }): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, { id, committee }, { headers });
+    return this.http.put<any>(`${this.apiUrl}/${id}`, { id, name: committee.name }, { headers });
   }
 
   // Delete a committee

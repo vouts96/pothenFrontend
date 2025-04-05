@@ -28,18 +28,24 @@ export class AllSubmissionsComponent implements OnInit {
   }
 
   toggleDetails(submissionId: number): void {
-    // If the same submission is clicked again, collapse it
-    this.expandedSubmissionId = this.expandedSubmissionId === submissionId ? null : submissionId;
-  }
-
-  toggleChat(submissionId: number): void {
-    if (this.expandedChatId === submissionId) {
-      this.expandedChatId = null; // Collapse chat if clicked again
+    if (this.expandedSubmissionId === submissionId) {
+      this.expandedSubmissionId = null;
     } else {
-      this.expandedChatId = submissionId; // Expand chat
-      this.loadSubmissionAudit(submissionId); // Fetch audit data
+      this.expandedSubmissionId = submissionId;
+      this.expandedChatId = null; // 🔒 Close chat when opening details
     }
   }
+  
+  toggleChat(submissionId: number): void {
+    if (this.expandedChatId === submissionId) {
+      this.expandedChatId = null;
+    } else {
+      this.expandedChatId = submissionId;
+      this.expandedSubmissionId = null; // 🔒 Close details when opening chat
+      this.loadSubmissionAudit(submissionId);
+    }
+  }
+  
 
   // Fetch submissions from the backend
   loadSubmissions(): void {

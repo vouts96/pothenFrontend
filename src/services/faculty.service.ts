@@ -42,7 +42,7 @@ export class FacultyService {
   // Update an existing faculty
   updateFaculty(id: number, faculty: { name: string }): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, { id, faculty }, { headers });
+    return this.http.put<any>(`${this.apiUrl}/${id}`, { id, name: faculty.name }, { headers });
   }
 
   // Delete a faculty

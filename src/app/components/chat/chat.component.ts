@@ -27,11 +27,11 @@ export class ChatComponent {
 
     // Extract `modifiedBy` and `modifiedDate`, format as string
     const formattedData = this.auditResponse.map((item: { id: any; modifiedBy: any; modifiedDate: any; }) =>
-      `ID: ${item.id}, Modified By: ${item.modifiedBy}, Modification Date: ${item.modifiedDate.split('T')[0]}`
+      `ID: ${item.id}, Τροποποιήθηκε από: ${item.modifiedBy}, Ημερομηνία Τροποποίησης: ${item.modifiedDate.split('T')[0]}`
     ).join("\n");
 
     // Prepare full prompt
-    const fullPrompt = `${this.messageText}\n\nSubmission Log:\n${formattedData}`;
+    const fullPrompt = `${this.messageText}\n\nΑρχείο Καταγραφής:\n${formattedData}`;
 
     console.log(fullPrompt)
     // Call backend (JHipster API)

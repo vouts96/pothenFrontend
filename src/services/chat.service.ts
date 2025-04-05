@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatService {
-  private apiUrl = 'https://taxisnet.dslab.ece.ntua.gr:5000/generate';
+  private apiUrl = 'https://147.102.74.178:5000/generate';
 
   constructor(private http: HttpClient) {}
 
