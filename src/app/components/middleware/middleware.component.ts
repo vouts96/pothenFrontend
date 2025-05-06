@@ -15,8 +15,36 @@ export class MiddlewareComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const code = params['code']; // Get 'code' from the URL
+      const iss = params['iss'];
+      const sessionState = params['session_state'];
+      const paramKeys = Object.keys(params);
+  
+      const isKeycloakLogin =
+        code && iss && sessionState &&
+        paramKeys.length === 3;
 
-      if (code) {
+      if(isKeycloakLogin){
+        console.log('Keycloak login detected');
+        console.log('Code found in URL:', code);
+        this.authService.loginKeycloak(code).subscribe(response => {
+          this.authService.saveToken(response.id_token);
+          this.authService.saveOAuthMethod('keycloak');
+          const roles = ['ROLE_USER']
+          this.authService.saveRoles(['ROLE_USER']);
+          
+          // Redirect based on role
+          if (roles.includes('ROLE_ADMIN')) {
+            this.router.navigate(['/admin/home']);
+          } else if (roles.includes('ROLE_USER')) {
+            this.router.navigate(['/user/home']);
+          }
+        }, error => {
+          console.error('Oauth2 Login failed', error);
+          alert('Απέτυχε η αυθεντικοποίηση μέσω keycloak')
+          this.router.navigate(['/login'])
+        })
+      }
+      else if (code) {
         console.log('Code found in URL:', code);
         this.authService.loginOauth2(code).subscribe(response => {
           //console.log('Login successful!', response);

@@ -24,6 +24,10 @@ export class AuthService {
   loginOauth2(code: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/authenticate-oauth2?code=${code}`); 
   }
+
+  loginKeycloak(code: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/authenticate-keycloak?code=${code}`); 
+  }
   
 
   saveToken(token: string) {
@@ -70,6 +74,12 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
     window.location.href = environment.logoutURL;
   }
+
+  logout_keycloak(){
+    window.location.href = environment.logoutKeycloakURL;
+    localStorage.removeItem(this.tokenKey);
+  }
+  
 
   getAccount(): Observable<any> { 
     const token = localStorage.getItem('auth-token'); // Retrieve the token from localStorage

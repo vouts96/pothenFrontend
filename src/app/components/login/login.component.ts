@@ -76,6 +76,21 @@ export class LoginComponent implements OnInit{
 
   redirectToTaxisnet() {
     window.location.href = `https://test.gsis.gr/oauth2servergov/oauth/authorize?response_type=code&client_id=${this.client_id}`;
-}
+  }
+
+  redirectToKeycloak() {
+    const clientId = 'public-client'; // your client ID in Keycloak
+    const redirectUri = encodeURIComponent('https://147.102.74.34'); // or your deployed frontend
+    const realm = 'billys'; // your realm name
+    const responseType = 'code';
+    const scope = 'openid';
+  
+    window.location.href = `https://gpu.dslab.ece.ntua.gr:8443/realms/${realm}/protocol/openid-connect/auth` +
+      `?client_id=${clientId}` +
+      `&redirect_uri=${redirectUri}` +
+      `&response_type=${responseType}` +
+      `&scope=${scope}`;
+  }
+  
 
 }

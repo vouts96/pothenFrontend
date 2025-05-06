@@ -20,6 +20,9 @@ export class HeaderComponent {
         else if(this.authService.getOAuthMethod() == 'oauth2'){
           this.authService.logout_oauth2()
         }
+        else if(this.authService.getOAuthMethod() == 'keycloak'){
+          this.authService.logout_keycloak()
+        }
         
       }
 

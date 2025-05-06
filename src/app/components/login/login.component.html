@@ -21,6 +21,9 @@
 			<li class="nav-item">
 				<a class="nav-link" [class.active]="selectedTab === 'altLogin'" (click)="selectTab('altLogin')">Σύνδεση με Κωδικούς Taxisnet</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" [class.active]="selectedTab === 'keycloakLogin'" (click)="selectTab('keycloakLogin')">Σύνδεση με Keycloak</a>
+			</li>
 			</ul>
 		</div>
   
@@ -67,6 +70,13 @@
 				<i class="fa fa-sign-in-alt ml-2"></i>
 			  </button>
 			</div>
+
+			<div *ngIf="selectedTab === 'keycloakLogin'" class="tab-pane">
+				<button type="submit" class="btn btn-success btn-lg w-100 py-3 mt-3" (click)="redirectToKeycloak()">
+				  Είσοδος στην εφαρμογή μέσω Keycloak
+				  <i class="fa fa-sign-in-alt ml-2"></i>
+				</button>
+			  </div>
 		  </div>
 		</div>
 	  </div>
